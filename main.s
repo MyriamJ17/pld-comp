@@ -9,5 +9,5 @@ main:
     movl $92, %eax
 
     # epilogue
-    popq %rbp   # restore %rbp frim the stack
+    popq %rbp   # restore %rbp from the stack
     ret # return to the caller

@@ -1,0 +1,2 @@
+A FAIRE POUR LE PROJET COMP :
+- Une variable déclarée est utilisée au moins une fois

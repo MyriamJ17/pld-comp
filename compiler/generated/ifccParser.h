@@ -18,7 +18,8 @@ public:
   };
 
   enum {
-    RuleAxiom = 0, RuleProg = 1, RuleAssign_statement = 2, RuleReturn_stmt = 3
+    RuleAxiom = 0, RuleProg = 1, RuleStatement = 2, RuleAssign_statement = 3, 
+    RuleReturn_stmt = 4
   };
 
   ifccParser(antlr4::TokenStream *input);
@@ -33,6 +34,7 @@ public:
 
   class AxiomContext;
   class ProgContext;
+  class StatementContext;
   class Assign_statementContext;
   class Return_stmtContext; 
 
@@ -54,12 +56,26 @@ public:
     ProgContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Return_stmtContext *return_stmt();
+    std::vector<StatementContext *> statement();
+    StatementContext* statement(size_t i);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
    
   };
 
   ProgContext* prog();
+
+  class  StatementContext : public antlr4::ParserRuleContext {
+  public:
+    StatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Assign_statementContext *assign_statement();
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  StatementContext* statement();
 
   class  Assign_statementContext : public antlr4::ParserRuleContext {
   public:

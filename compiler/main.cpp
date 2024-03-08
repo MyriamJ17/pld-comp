@@ -49,8 +49,8 @@ int main(int argn, const char **argv)
         exit(1);
     }
 
-    AssignVisitor av;
-    av.visit(tree);
+    //AssignVisitor av;
+    //av.visit(tree);
     CodeGenVisitor v;
     v.visit(tree);
 
